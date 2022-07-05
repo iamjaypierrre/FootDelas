@@ -1,25 +1,20 @@
 package me.dio.footdelas.ui.field;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.room.Database;
-import androidx.room.Room;
 
-import me.dio.footdelas.MainActivity;
+import com.google.android.material.snackbar.Snackbar;
+
 import me.dio.footdelas.data.local.AppDatabase;
 import me.dio.footdelas.databinding.FragmentFieldBinding;
-import me.dio.footdelas.domain.News;
+import me.dio.footdelas.ui.MainActivity;
 import me.dio.footdelas.ui.adapters.FieldAdapter;
 
 public class FieldFragment extends Fragment {
@@ -33,6 +28,8 @@ public class FieldFragment extends Fragment {
 
         binding = FragmentFieldBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        binding.srlNews.setOnRefreshListener(fieldViewModel::findNews);
 
 
         binding.rvField.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -48,16 +45,23 @@ public class FieldFragment extends Fragment {
         fieldViewModel.getState().observe(getViewLifecycleOwner(), state -> {
             switch (state) {
                 case DOING:
-
+                    binding.srlNews.setRefreshing(true);
                     break;
                 case DONE:
+                    binding.srlNews.setRefreshing(false);
                     break;
                 case ERROR:
+                    binding.srlNews.setRefreshing(false);
+                    Snackbar.make(binding.srlNews, "Network error.", Snackbar.LENGTH_SHORT).show();
+
 
             }
         });
 
             return root;
+    }
+
+    private void fieldViewModel() {
     }
 
     @Override

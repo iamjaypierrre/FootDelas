@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "507395698289",
+    "project_id": "foot-delas",
+    "storage_bucket": "foot-delas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:507395698289:android:f881e7d22840dcdf9535d0",
+        "android_client_info": {
+          "package_name": "me.dio.footdelas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "507395698289-l7816k629r9s35nrjkufbfu1mp0v1rfj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDctms8IcRHRS3YDVdpPrFbYZShKqpG_Ow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "507395698289-l7816k629r9s35nrjkufbfu1mp0v1rfj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

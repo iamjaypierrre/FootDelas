@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import java.util.List;
 
-import me.dio.footdelas.MainActivity;
+import me.dio.footdelas.ui.MainActivity;
 import me.dio.footdelas.databinding.FragmentFavoritesBinding;
 import me.dio.footdelas.domain.News;
 import me.dio.footdelas.ui.adapters.FieldAdapter;

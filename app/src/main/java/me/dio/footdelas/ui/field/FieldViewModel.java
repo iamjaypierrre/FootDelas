@@ -2,6 +2,7 @@ package me.dio.footdelas.ui.field;
 
 import android.app.Application;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.room.Room;
@@ -29,7 +30,7 @@ public class FieldViewModel extends ViewModel {
 
     public FieldViewModel() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://digitalinnovationone.github.io/soccer-news-api/")
+                .baseUrl("https://iamjaypierrre.github.io/Foot-Delas-Api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         api = retrofit.create(FootDelasAPI.class);
@@ -37,11 +38,11 @@ public class FieldViewModel extends ViewModel {
 
     }
 
-    private void findNews() {
+    public void findNews() {
         state.setValue(State.DOING);
         api.getNews().enqueue(new Callback<List<News>>() {
             @Override
-            public void onResponse(Call<List<News>> call, Response<List<News>> response) {
+            public void onResponse(@NonNull Call<List<News>> call, Response<List<News>> response) {
                 if (response.isSuccessful()) {
                     news.setValue(response.body());
                     state.setValue(State.DONE);
@@ -51,8 +52,8 @@ public class FieldViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<List<News>> call, Throwable t) {
-                t.printStackTrace();
+            public void onFailure(@NonNull Call<List<News>> call, @NonNull Throwable error) {
+                error.printStackTrace();
                 state.setValue(State.ERROR);
             }
         });
